@@ -12,7 +12,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.Properties;
 
-public class JPAEntityManagerFactory {
+public class HibernateUtil {
 
     private static SessionFactory sessionFactory;
 

@@ -1,6 +1,6 @@
 package com.hkarabakla;
 
-import com.hkarabakla.config.JPAEntityManagerFactory;
+import com.hkarabakla.config.HibernateUtil;
 import com.hkarabakla.entity.Gender;
 import com.hkarabakla.entity.Lesson;
 import com.hkarabakla.entity.Student;
@@ -17,7 +17,7 @@ public class Main {
 
     public static void main(String[] args) {
 
-        JPAEntityManagerFactory dbEntityManager = new JPAEntityManagerFactory();
+        HibernateUtil dbEntityManager = new HibernateUtil();
 
         Lesson math = new Lesson();
         Lesson science = new Lesson();
