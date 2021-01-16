@@ -6,10 +6,12 @@ import com.hkarabakla.entity.Lesson;
 import com.hkarabakla.entity.Student;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.query.Query;
 
 import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.HashSet;
+import java.util.List;
 
 import static org.junit.gen5.api.Assertions.assertFalse;
 
@@ -46,7 +48,7 @@ public class Main {
 
 
         try (SessionFactory sessionFactory = dbEntityManager.getSessionFactory();
-             Session session = sessionFactory.openSession();) {
+             Session session = sessionFactory.openSession()) {
 
             // Math ve Science derslerini kaydedelim
             session.getTransaction().begin();
@@ -68,6 +70,12 @@ public class Main {
             * kayit oldugu dersleri tutan registeredLessons objesi de veritabanindan degeerler cekilerek doldurulur
             * */
             System.out.println(s1FromDB);
+
+            Query query = session.createQuery("FROM Lesson where name=:i");
+            query.setParameter("i", "Math");
+
+            List<Lesson> list = query.list();
+            System.out.println(list.get(0));
 
         } catch (Exception ex) {
             ex.printStackTrace();
